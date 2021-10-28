@@ -1,7 +1,11 @@
+using System;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using AspStudio_Boilerplate.Data;
+using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -12,111 +16,130 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace AspStudio_Boilerplate  
-{  
-    public class Startup  
-    {  
-        public Startup(IConfiguration configuration)  
-        {  
-            Configuration = configuration;  
-        }  
-  
-        public IConfiguration Configuration { get; }  
-  
-        // This method gets called by the runtime. Use this method to add services to the container.  
-        public void ConfigureServices(IServiceCollection services)  
-        {  
-  
-            services.AddControllers();  
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));  
-  
-            // For Identity  
-            services.AddIdentity<ApplicationUser, IdentityRole>()  
-                .AddEntityFrameworkStores<ApplicationDbContext>()  
-                .AddDefaultTokenProviders();  
-  
-            // Adding Authentication  
-            services.AddAuthentication(options =>  
-            {  
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;  
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;  
-            })  
-  
-            // Adding Jwt Bearer  
-            .AddJwtBearer(options =>  
-            {  
-                options.SaveToken = true;  
-                options.RequireHttpsMetadata = false;  
-                options.TokenValidationParameters = new TokenValidationParameters()  
-                {  
-                    ValidateIssuer = true,  
-                    ValidateAudience = true,  
-                    ValidAudience = Configuration["JWT:ValidAudience"],  
-                    ValidIssuer = Configuration["JWT:ValidIssuer"],  
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))  
-                };  
-            });  
-  
-            services.AddSwaggerGen(swagger =>  
-            {  
-                //This is to generate the Default UI of Swagger Documentation    
-                swagger.SwaggerDoc("v1", new OpenApiInfo  
-                {  
-                    Version = "v1",  
-                    Title = "ASP.NET 5 Web API",  
-                    Description = "Authentication and Authorization in ASP.NET 5 with JWT and Swagger"  
-                });  
-                // To Enable authorization using Swagger (JWT)    
-                swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()  
-                {  
-                    Name = "Authorization",  
-                    Type = SecuritySchemeType.ApiKey,  
-                    Scheme = "Bearer",  
-                    BearerFormat = "JWT",  
-                    In = ParameterLocation.Header,  
-                    Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",  
-                });  
-                swagger.AddSecurityRequirement(new OpenApiSecurityRequirement  
-                {  
-                    {  
-                          new OpenApiSecurityScheme  
-                            {  
-                                Reference = new OpenApiReference  
-                                {  
-                                    Type = ReferenceType.SecurityScheme,  
-                                    Id = "Bearer"  
-                                }  
-                            },  
-                            new string[] {}  
-  
-                    }  
-                });  
-            });  
-        }  
-  
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)  
-        {  
-            if (env.IsDevelopment())  
-            {  
-                app.UseDeveloperExceptionPage();  
-            }  
-  
-            app.UseSwagger();  
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ASP.NET 5 Web API v1"));  
-  
-            app.UseHttpsRedirection();  
-  
-            app.UseRouting();  
-  
-            app.UseAuthentication();  
-            app.UseAuthorization();  
-  
-            app.UseEndpoints(endpoints =>  
-            {  
-                endpoints.MapControllers();  
-            });  
-        }  
-    }  
-} 
+namespace AspStudio_Boilerplate
+{
+    public class Startup
+    {
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        {
+            Configuration = configuration;
+        }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddCors();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseMySql(
+                    Configuration.GetConnectionString("DefaultConnection2"),
+                    new MariaDbServerVersion(new Version(10, 6, 4))
+                );
+            });
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
+            
+            services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ADSBackend API", Version = "v1" });
+            });
+
+            // configure strongly typed settings object
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+            
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication()
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
+            
+            
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            UpdateDatabase(app);
+            app.UseMiddleware<JwtMiddleware>();
+            app.UseRouting();
+            app.UseStaticFiles();
+
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+            });
+        }
+
+        // Applies any new migrations automatically
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices
+                    .GetRequiredService<IServiceScopeFactory>()
+                    .CreateScope())
+                {
+                    using (var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>())
+                    {
+                        context.Database.Migrate();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Log error
+            }
+        }
+    }
+}
