@@ -22,6 +22,12 @@ namespace AspStudio_Boilerplate
                 {
                     webBuilder.UseStartup<Startup>()
                         .UseUrls("http://localhost:4000");
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile("sidebar.json",
+                        optional: true,
+                        reloadOnChange: true);
                 });
     }
 }
