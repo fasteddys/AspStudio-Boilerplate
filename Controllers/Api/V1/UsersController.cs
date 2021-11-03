@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using AspStudio_Boilerplate.Models;
+using AspStudio_Boilerplate.Models.ApiModels;
 using AspStudio_Boilerplate.Models.Authentication;
 using AspStudio_Boilerplate.Models.ViewModels;
 using AspStudio_Boilerplate.Services;
@@ -27,37 +28,23 @@ namespace AspStudio_Boilerplate.Controllers.Api.V1
 
         [HttpPost("register")]
         [AllowAnonymous]
-        public async Task<ApiResponse> Register(RegisterViewModel registerViewModel)
+        public async Task<ApiResponse> Register(RegisterApiModel registerApiModel)
         {
-            if (!ModelState.IsValid) return new ApiResponse(HttpStatusCode.BadRequest, "Please provide a valid First Name, Email, and Password.");
-            
-            var user = await _userManager.FindByNameAsync(registerViewModel.Email);
-            if (user != null)
-            {
-                return new ApiResponse(HttpStatusCode.Forbidden, "A user already exists with this Email.");
-            }
+            var response = _userService.RegisterWithApi(registerApiModel);
 
-            ApplicationUser newUser = new ApplicationUser()
-            {
-                Email = registerViewModel.Email,
-                UserName = registerViewModel.Email,
-                FirstName = registerViewModel.FirstName,
-                LastName = registerViewModel.LastName
-            };
-            await _userManager.CreateAsync(newUser, registerViewModel.Password);
-
-            return new ApiResponse(HttpStatusCode.OK, "User created.");
+            if (await response == IdentityResult.Success) return new ApiResponse(HttpStatusCode.OK, "User created.");
+            else return new ApiResponse(HttpStatusCode.BadRequest, "Invalid Email and/or Password.");
         }
 
         [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
+        public ApiResponse Authenticate(AuthenticateRequest model)
         {
             var response = _userService.Authenticate(model);
 
             if (response == null)
-                return BadRequest(new { message = "Email or Password is incorrect" });
+                return new ApiResponse(HttpStatusCode.BadRequest, "Invalid Email and/or Password.");
 
-            return Ok(response);
+            return new ApiResponse(HttpStatusCode.OK, "");
         }
     }
 }
