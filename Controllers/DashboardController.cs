@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AspStudio_Boilerplate.Controllers
 {
     [Route("[controller]/[action]")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
         private readonly IUserService _userService;
