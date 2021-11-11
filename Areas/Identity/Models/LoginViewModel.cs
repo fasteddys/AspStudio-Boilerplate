@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspStudio_Boilerplate.Models.ViewModels
+namespace AspStudio_Boilerplate.Areas.Identity.Models
 {
     public class LoginViewModel
     {

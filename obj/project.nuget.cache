@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "y8cdDDf45vKpFQwm+JmOu+tD+aRpslAlTFTw4jJFM0gBIz8f99iUSgu3pgGX4iGEco+Ugl+Sw7n0YKLOJbISjQ==",
+  "dgSpecHash": "UG5oSOmkW5ZtuaIBhkKR0nqwbMB403k1gC9oVB8ENOZ0xPqITs37ZE1SbT/o+R6BdTAJ4FBii+t1DowVcyRpAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj",
   "expectedPackageFiles": [
@@ -137,7 +137,8 @@
     "C:\\Users\\vinni\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\vinni\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\vinni\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\vinni\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\vinni\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\vinni\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }

@@ -4,12 +4,12 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Areas.Identity.Models;
 using AspStudio_Boilerplate.Data;
 using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Models.ApiModels;
 using AspStudio_Boilerplate.Models.Authentication;
-using AspStudio_Boilerplate.Models.ViewModelsgitkr
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

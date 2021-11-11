@@ -13,8 +13,6 @@ C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\AspS
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\AspStudio-Boilerplate.TagHelpers.output.cache
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\AspStudio-Boilerplate.RazorCoreGenerate.cache
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Identity\Login.cshtml.g.cs
-C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Identity\Register.cshtml.g.cs
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Shared\_Footer.cshtml.g.cs
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Shared\_Header.cshtml.g.cs
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -98,3 +96,10 @@ C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\AspS
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\AspStudio-Boilerplate.csproj.CopyComplete
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\AspStudio-Boilerplate.genruntimeconfig.cache
 C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\Account\Login.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\Account\Logout.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\Account\Register.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\Error.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\_ViewImports.cshtml.g.cs
+C:\Users\vinni\Documents\Development\AspStudio-Boilerplate\obj\Debug\net5.0\Razor\Areas\Identity\Views\_ViewStart.cshtml.g.cs
