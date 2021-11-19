@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj": {}
+    "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj": {
+    "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj",
+        "projectUniqueName": "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj",
         "projectName": "AspStudio-Boilerplate",
-        "projectPath": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj",
-        "packagesPath": "C:\\Users\\vinni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\obj\\",
+        "projectPath": "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj",
+        "packagesPath": "/Users/vinniehat/.nuget/packages/",
+        "outputPath": "/Users/vinniehat/Documents/AspStudio-Boilerplate/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\vinni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/vinniehat/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -111,7 +105,7 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
               "version": "[5.0.12, 5.0.12]"
             }
           ],
@@ -123,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
