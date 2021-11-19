@@ -40,12 +40,11 @@ namespace AspStudio_Boilerplate.Areas.Identity.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
-            if (!ModelState.IsValid) return BadRequest(new {message = "Insufficient Fields."});
+            if (!ModelState.IsValid) return RedirectToAction("Register");
             
             var response = await _userService.RegisterWithIdentity(registerViewModel);
 
-            if (response == IdentityResult.Failed()) return View(); // Return them back to the Register Screen
-            else return RedirectToAction("Login");
+            return RedirectToAction(response.Succeeded == false ? "Register" : "Login");
         }
 
         [HttpPost]
@@ -54,7 +53,7 @@ namespace AspStudio_Boilerplate.Areas.Identity.Controllers
             if (!ModelState.IsValid) return BadRequest(new {message = "Insufficient Fields."});
             var response = await _userService.Login(model);
 
-            if (response == IdentityResult.Failed()) return View(); // Return them back to the Login Screen
+            if (response.Succeeded == false) return RedirectToAction("Login"); // Return them back to the Login Screen
             else return RedirectToAction("Index", "Dashboard");
         }
     }
