@@ -68,12 +68,9 @@ namespace AspStudio_Boilerplate.Services
 
             // Check password
             if (await _userManager.CheckPasswordAsync(user, model.Password))
-                return IdentityResult.Failed();
+                return IdentityResult.Success;
 
-            // authentication successful so generate jwt token
-            var token = generateJwtToken(user);
-
-            return IdentityResult.Success;
+            return IdentityResult.Failed();
         }
 
         public async Task<IdentityResult> RegisterWithApi(RegisterApiModel model)
