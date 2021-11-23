@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using AspStudio_Boilerplate.Data;
+using AspStudio_Boilerplate.Areas.Identity.Data;
 using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Services;
@@ -122,6 +122,15 @@ namespace AspStudio_Boilerplate
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
+            
+            
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+                new ApplicationSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+
+            }
         }
 
         // Applies any new migrations automatically
