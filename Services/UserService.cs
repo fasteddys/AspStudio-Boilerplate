@@ -30,12 +30,14 @@ namespace AspStudio_Boilerplate.Services
         private readonly ApplicationDbContext _context;
         private readonly AppSettings _appSettings;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserService(IOptions<AppSettings> appSettings, ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public UserService(IOptions<AppSettings> appSettings, ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _appSettings = appSettings.Value;
             _context = context;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model)
@@ -67,10 +69,11 @@ namespace AspStudio_Boilerplate.Services
                 return IdentityResult.Failed();
 
             // Check password
-            if (await _userManager.CheckPasswordAsync(user, model.Password))
-                return IdentityResult.Success;
-
-            return IdentityResult.Failed();
+            if (!await _userManager.CheckPasswordAsync(user, model.Password))
+                return IdentityResult.Failed();
+            
+            await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, lockoutOnFailure: false);
+            return IdentityResult.Success;
         }
 
         public async Task<IdentityResult> RegisterWithApi(RegisterApiModel model)

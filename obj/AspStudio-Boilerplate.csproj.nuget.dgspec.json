@@ -1,30 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj": {}
+    "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj": {}
   },
   "projects": {
-    "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj": {
+    "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj",
+        "projectUniqueName": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj",
         "projectName": "AspStudio-Boilerplate",
-        "projectPath": "/Users/vinniehat/Documents/AspStudio-Boilerplate/AspStudio-Boilerplate.csproj",
-        "packagesPath": "/Users/vinniehat/.nuget/packages/",
-        "outputPath": "/Users/vinniehat/Documents/AspStudio-Boilerplate/obj/",
+        "projectPath": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\AspStudio-Boilerplate.csproj",
+        "packagesPath": "C:\\Users\\vinni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vinni\\Documents\\Development\\AspStudio-Boilerplate\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+        ],
         "configFilePaths": [
-          "/Users/vinniehat/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\vinni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -35,8 +41,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
@@ -103,12 +109,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[5.0.12, 5.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -117,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
