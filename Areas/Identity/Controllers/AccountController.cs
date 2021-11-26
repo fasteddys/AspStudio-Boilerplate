@@ -48,6 +48,7 @@ namespace AspStudio_Boilerplate.Areas.Identity.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid) return BadRequest(new {message = "Insufficient Fields."});
