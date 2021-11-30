@@ -25,7 +25,7 @@ namespace AspStudio_Boilerplate.Configuration
                 Email = "admin@test.com",
                 FirstName = "Admin"
             };
-            
+
             try
             {
                 result = _userManager.CreateAsync(adminUser, "Password123!").Result;
@@ -37,9 +37,11 @@ namespace AspStudio_Boilerplate.Configuration
 
             if (!result.Succeeded)
             {
-                throw new Exception("The following error(s) occurred while creating the admin user: " + string.Join(" ", result.Errors.Select(e => e.Description)));
+                throw new Exception("The following error(s) occurred while creating the admin user: " +
+                                    string.Join(" ", result.Errors.Select(e => e.Description)));
             }
 
+            _userManager.AddToRoleAsync(adminUser, "User").Wait();
             _userManager.AddToRoleAsync(adminUser, "Admin").Wait();
         }
 

@@ -1,7 +1,13 @@
-﻿@{
+﻿@model AspStudio_Boilerplate.Models.ViewModels.DashboardViewModel
+@{
     ViewData["Title"] = "Starter Page";
 }
 
 <ul class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
 </ul>
+
+<div>
+       <h1 class="text-center display-6">Hello, @Model.User.FirstName!</h1>
+    <h2 class="text-center">Here's the Dashboard. Manage users, content, and more all at your fingertips.</h2>
+</div>
