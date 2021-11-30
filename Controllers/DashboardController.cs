@@ -1,4 +1,6 @@
-﻿using AspStudio_Boilerplate.Models;
+﻿using System.Threading.Tasks;
+using AspStudio_Boilerplate.Models;
+using AspStudio_Boilerplate.Models.ViewModels;
 using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -20,9 +22,15 @@ namespace AspStudio_Boilerplate.Controllers
         }
         
         [HttpGet]
-        public IActionResult Index()
+        public async Task<ViewResult> Index()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            DashboardViewModel dvm = new DashboardViewModel()
+            {
+                User = user,
+                UserId = user.Id
+            };
+            return View(dvm);
         }
     }
 }
