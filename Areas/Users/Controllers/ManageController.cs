@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AspStudio_Boilerplate.Areas.Identity.Models;
 using AspStudio_Boilerplate.Areas.Users.Models;
@@ -24,7 +24,6 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
         }
         
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var list = await _userManager.GetUsersInRoleAsync("User");
@@ -35,11 +34,15 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
                 {
                     FirstName = applicationUser.FirstName,
                     LastName = applicationUser.LastName,
-                    Email = applicationUser.Email
+                    Email = applicationUser.Email,
+                    Id = applicationUser.Id
                 };
                 users.Add(ivm);
             }
             return View(users);
         }
+        
+        
+        
     }
 }
