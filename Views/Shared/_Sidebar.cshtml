@@ -8,6 +8,7 @@
 @{
     var menuController = (ViewContext.RouteData.Values["controller"] != null) ? ViewContext.RouteData.Values["controller"].ToString() : null;
     var menuAction = (ViewContext.RouteData.Values["action"] != null) ? ViewContext.RouteData.Values["action"].ToString() : null;
+    var menuArea = (ViewContext.RouteData.Values["area"] != null) ? ViewContext.RouteData.Values["area"].ToString() : null;
     var sidebarMenu = Configuration.GetSection("sidebarMenu").GetChildren().ToArray();
 
     bool CheckForRoles(List<string> r1, string[] r2)
@@ -15,14 +16,22 @@
         return r1.Any(role => r2.Contains(role));
     }
 
-    string CheckForActive(string controller)
+    string CheckForActive(string controller, string view = null, string area = null)
     {
-        return menuController == controller ? "active" : "";
+        if (controller != null && view == null && area == null)
+        {
+            return controller == menuController ? "active" : "";
+        } else if (controller != null && view != null && area != null)
+        {
+           if (menuAction == view && menuController == controller && menuArea == area)
+            return "active";
+        } else if (controller == menuController && view == menuAction) return "active";
+
+        return "";
     }
 
 }
 
-}
 
 @if (SignInManager.IsSignedIn(User)) // If they are logged in and the navitem requires roles
 {
@@ -40,7 +49,7 @@
                 <div class="menu-header">Navigation</div>
                 @if (CheckForRoles(roles, new string[] {"User"}))
                 {
-                    <div class="menu-item @(CheckForActive("Dashboard"))">
+                    <div class="menu-item @(CheckForActive("Dashboard", "Index"))">
                     
                         <a asp-controller="Dashboard" asp-action="Index" class="menu-link">
                         
@@ -63,6 +72,23 @@
                                 <i class="fa fa-home"></i>
                             </span>
                             <span class="menu-text">Home</span>
+                        
+                        </a>
+
+                    </div>
+                }
+                
+                @if (CheckForRoles(roles, new string[] { "Admin" }))
+                {
+                    <div class="menu-header">Administration</div>
+                    <div class="menu-item @(CheckForActive("Manage", "Index", "Users"))">
+                    
+                        <a asp-area="Users" asp-controller="Manage" asp-action="Index" class="menu-link">
+                        
+                            <span class="menu-icon">
+                                <i class="fa fa-users-cog"></i>
+                            </span>
+                            <span class="menu-text">Manage Users</span>
                         
                         </a>
 
