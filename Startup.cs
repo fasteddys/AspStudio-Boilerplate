@@ -91,10 +91,24 @@ namespace AspStudio_Boilerplate
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Redirection to the 404 Page
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Error/ErrorPage";
+                    await next();
+                }
+            });
+            
+            
             UpdateDatabase(app);
             app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
             app.UseStaticFiles();
+            
+
 
 
             // global cors policy
