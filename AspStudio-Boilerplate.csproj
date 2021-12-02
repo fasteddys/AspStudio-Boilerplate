@@ -18,6 +18,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.13.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
@@ -26,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Users\Data" />
     <Folder Include="Services\" />
   </ItemGroup>
 
@@ -83,6 +85,12 @@
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\_StatusMessage.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_Footer.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_Header.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_Layout.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_LoginPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_Sidebar.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 
 </Project>
