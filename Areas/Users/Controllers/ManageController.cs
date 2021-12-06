@@ -1,17 +1,15 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Areas.Identity.Models;
 using AspStudio_Boilerplate.Areas.Users.Models;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AspStudio_Boilerplate.Areas.Users.Controllers
 {
     [Area("Users")]
-    
+
     public class ManageController : Controller
     {
         private readonly IUserService _userService;
@@ -22,7 +20,7 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
             _userService = userService;
             _userManager = userManager;
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -41,8 +39,21 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
             }
             return View(users);
         }
-        
-        
-        
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null) return RedirectToAction("Index");
+            var evm = new EditUserViewModel()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+            };
+            return View(evm);
+        }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Areas.Identity.Data;
+﻿using AspStudio_Boilerplate.Areas.Identity.Data;
 using AspStudio_Boilerplate.Areas.Identity.Models;
 using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
@@ -13,6 +7,11 @@ using AspStudio_Boilerplate.Models.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AspStudio_Boilerplate.Services
 {
@@ -43,10 +42,10 @@ namespace AspStudio_Boilerplate.Services
         public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model)
         {
             var user = await _userManager.FindByNameAsync(model.Email);
-            
+
 
             // return null if user not found
-            if (user == null) 
+            if (user == null)
                 return null;
 
             // Check password
@@ -58,20 +57,20 @@ namespace AspStudio_Boilerplate.Services
 
             return new AuthenticateResponse(user, token);
         }
-        
+
         public async Task<IdentityResult> Login(LoginViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.Email);
-            
+
 
             // return false if user not found
-            if (user == null) 
+            if (user == null)
                 return IdentityResult.Failed();
 
             // Check password
             if (!await _userManager.CheckPasswordAsync(user, model.Password))
                 return IdentityResult.Failed();
-            
+
             await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, lockoutOnFailure: false);
             return IdentityResult.Success;
         }
@@ -96,7 +95,7 @@ namespace AspStudio_Boilerplate.Services
 
             return result;
         }
-        
+
         public async Task<IdentityResult> RegisterWithIdentity(RegisterViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.Email);
@@ -112,7 +111,7 @@ namespace AspStudio_Boilerplate.Services
                 FirstName = model.FirstName,
                 LastName = model.LastName
             };
-            
+
             var result = await _userManager.CreateAsync(newUser, model.Password);
 
             return result;

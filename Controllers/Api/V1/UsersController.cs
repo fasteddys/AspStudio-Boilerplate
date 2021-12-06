@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Models;
+﻿using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Models.ApiModels;
 using AspStudio_Boilerplate.Models.Authentication;
 using AspStudio_Boilerplate.Services;
@@ -8,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace AspStudio_Boilerplate.Controllers.Api.V1
 {

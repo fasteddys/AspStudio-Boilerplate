@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using AspStudio_Boilerplate.Models;
+﻿using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Models.ViewModels;
 using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AspStudio_Boilerplate.Controllers
 {
@@ -20,7 +20,7 @@ namespace AspStudio_Boilerplate.Controllers
             _userService = userService;
             _userManager = userManager;
         }
-        
+
         [HttpGet]
         public async Task<ViewResult> Index()
         {

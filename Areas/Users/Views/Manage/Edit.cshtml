@@ -1,0 +1,52 @@
+﻿@model AspStudio_Boilerplate.Areas.Users.Models.EditUserViewModel
+
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<ul class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Home</a>
+    </li>
+</ul>
+
+<div>
+    <h3>Now Editing: @Model.FirstName</h3>
+    <div class="card">
+        <div class="card-body">
+
+            <form asp-action="Edit">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="btn-group">
+                    <div>
+                        <a asp-action="Index" class="btn btn-danger">Cancel</a>
+                    </div>
+                    <div>
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+
+    </div>
+</div>

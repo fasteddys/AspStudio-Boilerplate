@@ -1,6 +1,4 @@
 ﻿using AspStudio_Boilerplate.Models;
-using AspStudio_Boilerplate.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
