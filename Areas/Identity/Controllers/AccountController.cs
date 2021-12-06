@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Areas.Identity.Models;
+﻿using AspStudio_Boilerplate.Areas.Identity.Models;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AspStudio_Boilerplate.Areas.Identity.Controllers
 {
@@ -20,7 +19,7 @@ namespace AspStudio_Boilerplate.Areas.Identity.Controllers
             _userService = userService;
             _userManager = userManager;
         }
-        
+
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login()
@@ -41,7 +40,7 @@ namespace AspStudio_Boilerplate.Areas.Identity.Controllers
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             if (!ModelState.IsValid) return RedirectToAction("Register");
-            
+
             var response = await _userService.RegisterWithIdentity(registerViewModel);
 
             return RedirectToAction(response.Succeeded == false ? "Register" : "Login");
@@ -51,7 +50,7 @@ namespace AspStudio_Boilerplate.Areas.Identity.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid) return BadRequest(new {message = "Insufficient Fields."});
+            if (!ModelState.IsValid) return BadRequest(new { message = "Insufficient Fields." });
             var response = await _userService.Login(model);
 
             if (response.Succeeded == false) return RedirectToAction("Login"); // Return them back to the Login Screen

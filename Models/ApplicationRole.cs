@@ -4,6 +4,6 @@ namespace AspStudio_Boilerplate.Models
 {
     public class ApplicationRole : IdentityRole<int>
     {
-        
+
     }
 }

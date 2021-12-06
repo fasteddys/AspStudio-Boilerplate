@@ -1,6 +1,6 @@
+using AspStudio_Boilerplate.Areas.Identity.Data;
 using System;
 using System.Threading.Tasks;
-using AspStudio_Boilerplate.Areas.Identity.Data;
 
 namespace AspStudio_Boilerplate.Services
 {

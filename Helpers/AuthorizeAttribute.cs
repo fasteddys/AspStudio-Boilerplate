@@ -1,8 +1,8 @@
-﻿using System;
-using AspStudio_Boilerplate.Models;
+﻿using AspStudio_Boilerplate.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
 
 namespace AspStudio_Boilerplate.Helpers
 {
@@ -11,7 +11,7 @@ namespace AspStudio_Boilerplate.Helpers
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var user = (ApplicationUser) context.HttpContext.Items["User"];
+            var user = (ApplicationUser)context.HttpContext.Items["User"];
             if (user == null)
             {
                 // not logged in

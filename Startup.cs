@@ -1,7 +1,3 @@
-using System;
-using System.IO;
-using System.Reflection;
-using System.Text;
 using AspStudio_Boilerplate.Areas.Identity.Data;
 using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
@@ -12,9 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
+using System.Text;
 
 namespace AspStudio_Boilerplate
 {
@@ -43,7 +40,7 @@ namespace AspStudio_Boilerplate
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
-            
+
             services.AddMvc();
 
             services.AddSwaggerGen(c =>
@@ -55,7 +52,7 @@ namespace AspStudio_Boilerplate
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
-            
+
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
@@ -74,8 +71,8 @@ namespace AspStudio_Boilerplate
             });
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-            
-            
+
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
@@ -101,13 +98,13 @@ namespace AspStudio_Boilerplate
                     await next();
                 }
             });
-            
-            
+
+
             UpdateDatabase(app);
             app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
             app.UseStaticFiles();
-            
+
 
 
 
@@ -136,8 +133,8 @@ namespace AspStudio_Boilerplate
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
-            
-            
+
+
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();

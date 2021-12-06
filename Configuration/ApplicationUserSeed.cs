@@ -1,11 +1,11 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using AspStudio_Boilerplate.Areas.Identity.Data;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AspStudio_Boilerplate.Configuration
 {
