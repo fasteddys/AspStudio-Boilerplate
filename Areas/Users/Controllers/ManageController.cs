@@ -48,20 +48,23 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null) return RedirectToAction("Index");
-            var evm = _mapper.Map()
+            var evm = _mapper.Map<EditUserViewModel>(user);
             return View(evm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditUserViewModel evm)
+        public async Task<IActionResult> Edit(int id, EditUserViewModel evm)
         {
             if (evm.Id == null) return RedirectToAction("Edit");
 
             var user = await _userManager.FindByIdAsync(evm.Id.ToString());
             if (user == null) return RedirectToAction("Edit");
+            
+            
 
-            var newEVM = _mapper.Map<ApplicationUser>(evm);
-
+            _mapper.Map<EditUserViewModel, ApplicationUser>(evm, user);
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("Index");
         }
     }
 }

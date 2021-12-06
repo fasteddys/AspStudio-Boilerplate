@@ -1,10 +1,11 @@
-﻿namespace AspStudio_Boilerplate.Areas.Users.Models;
-
-public class IndexViewModel
+﻿namespace AspStudio_Boilerplate.Areas.Users.Models
 {
-    public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Email { get; set; }
-    public string CreatedAt { get; set; }
+    public class IndexViewModel
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string CreatedAt { get; set; }
+    }
 }
