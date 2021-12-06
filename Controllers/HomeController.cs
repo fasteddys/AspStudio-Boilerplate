@@ -18,5 +18,10 @@ namespace AspStudio_Boilerplate.Controllers
         {
             return View();
         }
+
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
     }
 }
