@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Reflection;
 using System.Text;
 
 namespace AspStudio_Boilerplate
@@ -28,7 +29,7 @@ namespace AspStudio_Boilerplate
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
+            services.AddAutoMapper(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseMySql(

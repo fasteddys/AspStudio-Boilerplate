@@ -1,4 +1,7 @@
-﻿namespace AspStudio_Boilerplate.Areas.Users.Models
+﻿using AspStudio_Boilerplate.Models;
+using AutoMapper;
+
+namespace AspStudio_Boilerplate.Areas.Users.Models
 {
     public class EditUserViewModel
     {
@@ -8,5 +11,13 @@
         public string LastName { get; set; }
         public int Id { get; set; }
 
+    }
+
+    public class EditUserViewModelProfile : Profile
+    {
+        public EditUserViewModelProfile()
+        {
+            CreateMap<EditUserViewModel, ApplicationUser>().ReverseMap(); // Output is ApplicationUser
+        }
     }
 }
