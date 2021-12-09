@@ -66,5 +66,14 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
             await _userManager.UpdateAsync(user);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id == null) return RedirectToAction("Index");
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            return View(_mapper.Map<EditUserViewModel>(user));
+        }
     }
 }
