@@ -7,12 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspStudio_Boilerplate.Areas.Users.Controllers
 {
     [Area("Users")]
-
     public class ManageController : Controller
     {
         private readonly IUserService _userService;
@@ -20,7 +20,8 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
         private readonly IMapper _mapper;
         private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public ManageController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper, RoleManager<ApplicationRole> roleManager)
+        public ManageController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper,
+            RoleManager<ApplicationRole> roleManager)
         {
             _userService = userService;
             _userManager = userManager;
@@ -44,6 +45,7 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
                 };
                 users.Add(ivm);
             }
+
             return View(users);
         }
 
@@ -53,17 +55,11 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null) return RedirectToAction("Index");
             var evm = _mapper.Map<EditUserViewModel>(user);
-            var all_roles = await _roleManager.Roles.ToListAsync();
-            var current_roles = await _userManager.GetRolesAsync(user);
-            foreach (var role in all_roles)
-            {
-                evm.Roles.Add(new EditUserRolesViewModel()
-                {
-                    Name = role.Name,
-                    Has = current_roles.Contains(role.Name)
-                });
-            }
-            
+            evm.Roles = (await _userManager.GetRolesAsync(user)).ToList();
+
+
+            ViewBag.Roles = new MultiSelectList(await _roleManager.Roles.ToListAsync(), "Name", "Name");
+
             return View(evm);
         }
 
@@ -74,8 +70,7 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
 
             var user = await _userManager.FindByIdAsync(evm.Id.ToString());
             if (user == null) return RedirectToAction("Edit");
-            
-            
+
 
             _mapper.Map<EditUserViewModel, ApplicationUser>(evm, user);
             await _userManager.UpdateAsync(user);
@@ -83,7 +78,6 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
         }
 
         [HttpGet]
-
         public async Task<IActionResult> Delete(int id)
         {
             if (id == null) return RedirectToAction("Index");

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using AspStudio_Boilerplate.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AspStudio_Boilerplate.Areas.Users.Models
 {
@@ -17,7 +18,7 @@ namespace AspStudio_Boilerplate.Areas.Users.Models
         [Display(Name="Last Name")]
         public string LastName { get; set; }
         public int Id { get; set; }
-        public List<EditUserRolesViewModel> Roles { get; set; } = new List<EditUserRolesViewModel>();
+        public List<string> Roles { get; set; }
 
     }
 
@@ -27,11 +28,5 @@ namespace AspStudio_Boilerplate.Areas.Users.Models
         {
             CreateMap<EditUserViewModel, ApplicationUser>().ReverseMap(); // Output is ApplicationUser
         }
-    }
-
-    public class EditUserRolesViewModel
-    {
-        public string Name { get; set; }
-        public bool Has { get; set; }
     }
 }

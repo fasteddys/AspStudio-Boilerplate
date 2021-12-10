@@ -1,4 +1,5 @@
-﻿@model AspStudio_Boilerplate.Areas.Users.Models.EditUserViewModel
+﻿@using System.Linq
+@model AspStudio_Boilerplate.Areas.Users.Models.EditUserViewModel
 
 
 @{
@@ -35,18 +36,9 @@
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
                 
-                <hr/>
-                @foreach (var role in Model.Roles)
-                {
-
-                        <div class="form-check">
-                            <label class="form-check-label">@role.Name</label>
-                            <input class="form-check-input" disabled="@(role.Name == "User")" asp-for="@role.Has" class="form-control"/>
-                        </div>
-
-
-
-                }
+                <br/>
+                <select class="js-example-basic-multiple form-control" id="rolesDropdown" asp-for="Roles" asp-items="ViewBag.Roles" multiple="multiple"></select>
+                <br/>
                 <br/>
                 <div class="btn-group">
                     <div>
@@ -65,3 +57,33 @@
 
     </div>
 </div>
+
+@section Styles  {
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        </style>
+}
+@section Scripts {
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $("#rolesDropdown").select2({
+                tags: true,
+                createTag: function (params) {
+                    // Don't offset to create a tag if there is no at symbol
+                    if (params.term.indexOf('@@') === -1) {
+                        // Return null to disable tag creation
+                        return null;
+                    }
+                    return {
+                        id: params.term,
+                        text: params.term
+                    }
+                }
+            }
+        );
+    </script>
+}
