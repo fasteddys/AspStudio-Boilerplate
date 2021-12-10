@@ -4,8 +4,10 @@ using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspStudio_Boilerplate.Areas.Users.Controllers
 {
@@ -16,12 +18,14 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
         private readonly IUserService _userService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public ManageController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper)
+        public ManageController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper, RoleManager<ApplicationRole> roleManager)
         {
             _userService = userService;
             _userManager = userManager;
             _mapper = mapper;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -49,6 +53,17 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null) return RedirectToAction("Index");
             var evm = _mapper.Map<EditUserViewModel>(user);
+            var all_roles = await _roleManager.Roles.ToListAsync();
+            var current_roles = await _userManager.GetRolesAsync(user);
+            foreach (var role in all_roles)
+            {
+                evm.Roles.Add(new EditUserRolesViewModel()
+                {
+                    Name = role.Name,
+                    Has = current_roles.Contains(role.Name)
+                });
+            }
+            
             return View(evm);
         }
 
