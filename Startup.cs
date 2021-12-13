@@ -13,6 +13,8 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 using System.Text;
+using AspStudio_Boilerplate.Areas.Audit.Models;
+using Microsoft.Build.Tasks;
 
 namespace AspStudio_Boilerplate
 {
@@ -72,6 +74,7 @@ namespace AspStudio_Boilerplate
             });
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<AuditService, AuditService>();
 
 
             services.Configure<IdentityOptions>(options =>

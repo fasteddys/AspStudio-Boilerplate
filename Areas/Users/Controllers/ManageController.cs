@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Areas.Audit.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +20,16 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly AuditService _auditService;
 
         public ManageController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper,
-            RoleManager<ApplicationRole> roleManager)
+            RoleManager<ApplicationRole> roleManager, AuditService auditService)
         {
             _userService = userService;
             _userManager = userManager;
             _mapper = mapper;
             _roleManager = roleManager;
+            _auditService = auditService;
         }
 
         [HttpGet]
@@ -59,6 +62,7 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
 
 
             ViewBag.Roles = new MultiSelectList(await _roleManager.Roles.ToListAsync(), "Name", "Name");
+            await _auditService.Info(user.Id, "User Accessed Edit Users Page");
 
             return View(evm);
         }

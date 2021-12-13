@@ -30,6 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Audit\Data" />
+    <Folder Include="Areas\Audit\Views" />
     <Folder Include="Areas\Users\Data" />
     <Folder Include="Entities\DTOs" />
     <Folder Include="Services\" />
