@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Build.Tasks;
 
 namespace AspStudio_Boilerplate
@@ -29,6 +30,10 @@ namespace AspStudio_Boilerplate
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RazorViewEngineOptions>(o => 
+            {  
+                o.ViewLocationExpanders.Add(new SubAreaViewLocationExpander());  
+            });
             services.AddCors();
             services.AddAutoMapper(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
             services.AddDbContext<ApplicationDbContext>(options =>
