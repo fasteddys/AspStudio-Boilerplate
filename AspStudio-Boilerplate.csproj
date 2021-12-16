@@ -30,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Audit\Data" />
-    <Folder Include="Areas\Audit\Views" />
-    <Folder Include="Areas\Users\Data" />
     <Folder Include="Entities\DTOs" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -97,6 +94,8 @@
     <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_LoginPartial.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_Sidebar.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Users\Views\AuditLog\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\AuditLog\Views\Index.cshtml" />
   </ItemGroup>
 
 </Project>

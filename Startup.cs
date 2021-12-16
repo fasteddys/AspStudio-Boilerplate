@@ -13,7 +13,6 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 using System.Text;
-using AspStudio_Boilerplate.Areas.Audit.Models;
 using Microsoft.Build.Tasks;
 
 namespace AspStudio_Boilerplate
@@ -74,7 +73,6 @@ namespace AspStudio_Boilerplate
             });
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<AuditService, AuditService>();
 
 
             services.Configure<IdentityOptions>(options =>
@@ -123,6 +121,9 @@ namespace AspStudio_Boilerplate
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "SubArea",
+                    pattern: "{area:exists}/{subarea:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "Area",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
