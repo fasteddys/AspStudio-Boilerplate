@@ -9,6 +9,7 @@
     var menuController = (ViewContext.RouteData.Values["controller"] != null) ? ViewContext.RouteData.Values["controller"].ToString() : null;
     var menuAction = (ViewContext.RouteData.Values["action"] != null) ? ViewContext.RouteData.Values["action"].ToString() : null;
     var menuArea = (ViewContext.RouteData.Values["area"] != null) ? ViewContext.RouteData.Values["area"].ToString() : null;
+    var menuSubArea = (ViewContext.RouteData.Values["subArea"] != null) ? ViewContext.RouteData.Values["subArea"].ToString() : null;
     var sidebarMenu = Configuration.GetSection("sidebarMenu").GetChildren().ToArray();
 
     bool CheckForRoles(List<string> r1, string[] r2)
@@ -16,15 +17,20 @@
         return r1.Any(role => r2.Contains(role));
     }
 
-    string CheckForActive(string controller, string view = null, string area = null)
+    string CheckForActive(string controller, string view = null, string area = null, string subarea = null)
     {
-        if (controller != null && view == null && area == null)
+        if (controller != null && view == null && area == null && subarea == null)
         {
             return controller == menuController ? "active" : "";
-        } else if (controller != null && view != null && area != null)
+        } else if (controller != null && view != null && area != null && subarea == null)
         {
            if (menuAction == view && menuController == controller && menuArea == area)
             return "active";
+        } 
+        else if (controller != null && view != null && area != null && subarea != null)
+        {
+            if (menuAction == view && menuController == controller && menuArea == area && menuSubArea == subarea)
+                return "active";
         } else if (controller == menuController && view == menuAction) return "active";
 
         return "";
@@ -81,9 +87,9 @@
                 @if (CheckForRoles(roles, new string[] { "Admin" }))
                 {
                     <div class="menu-header">Administration</div>
-                    <div class="menu-item @(CheckForActive("Manage", "Index", "Administration"))">
+                    <div class="menu-item @(CheckForActive("Manage", "Index", "Administration", "Users"))">
                     
-                        <a asp-area="Users" asp-controller="Manage" asp-action="Index" class="menu-link">
+                        <a asp-area="Administration" asp-sub-area="Users" asp-controller="Manage" asp-action="Index" class="menu-link">
                         
                             <span class="menu-icon">
                                 <i class="fa fa-users-cog"></i>
