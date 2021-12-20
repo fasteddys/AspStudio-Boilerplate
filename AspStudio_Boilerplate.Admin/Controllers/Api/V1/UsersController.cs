@@ -1,16 +1,14 @@
-﻿using AspStudio_Boilerplate.Models;
-using AspStudio_Boilerplate.Models.ApiModels;
-using AspStudio_Boilerplate.Models.Authentication;
-using AspStudio_Boilerplate.Services;
+﻿using System.Net;
+using AspStudio_Boilerplate.Infrastructure.Entities.Api;
+using AspStudio_Boilerplate.Infrastructure.Entities.Api.V1.Authentication;
+using AspStudio_Boilerplate.Infrastructure.Entities.Identity;
+using AspStudio_Boilerplate.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Infrastructure.Services;
 
-namespace AspStudio_Boilerplate.Controllers.Api.V1
+namespace AspStudio_Boilerplate.Admin.Controllers.Api.V1
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Produces("application/json")]

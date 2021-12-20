@@ -1,11 +1,11 @@
-﻿using AspStudio_Boilerplate.Areas.Identity.Models;
+﻿using AspStudio_Boilerplate.Infrastructure.Entities.Identity;
+using AspStudio_Boilerplate.Infrastructure.Entities.Identity.ViewModels;
 using AspStudio_Boilerplate.Infrastructure.Services;
-using AspStudio_Boilerplate.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspStudio_Boilerplate.Controllers.Identity
+namespace AspStudio_Boilerplate.Admin.Controllers.Identity
 {
     [Area("Identity")]
     public class AccountController : Controller

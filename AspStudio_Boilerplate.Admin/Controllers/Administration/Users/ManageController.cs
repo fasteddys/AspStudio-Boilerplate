@@ -1,20 +1,13 @@
-using AspStudio_Boilerplate.Areas.Users.Models;
-using AspStudio_Boilerplate.Models;
-using AspStudio_Boilerplate.Services;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Areas.Audit.Models;
 using AspStudio_Boilerplate.Infrastructure.Entities.Identity;
 using AspStudio_Boilerplate.Infrastructure.Entities.Users.ViewModels;
 using AspStudio_Boilerplate.Infrastructure.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspStudio_Boilerplate.Areas.Users.Controllers
+namespace AspStudio_Boilerplate.Admin.Controllers.Administration.Users
 {
     [Area("Users")]
     public class ManageController : Controller

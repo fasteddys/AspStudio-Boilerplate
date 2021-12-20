@@ -1,4 +1,4 @@
-﻿namespace AspStudio_Boilerplate.Helpers
+﻿namespace AspStudio_Boilerplate.Infrastructure.Helpers
 {
     public class AppSettings
     {

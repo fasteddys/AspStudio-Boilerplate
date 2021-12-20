@@ -1,5 +1,4 @@
-﻿using AspStudio_Boilerplate.Helpers;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -11,6 +10,7 @@ using AspStudio_Boilerplate.Infrastructure.Entities.Api;
 using AspStudio_Boilerplate.Infrastructure.Entities.Api.V1.Authentication;
 using AspStudio_Boilerplate.Infrastructure.Entities.Identity;
 using AspStudio_Boilerplate.Infrastructure.Entities.Identity.ViewModels;
+using AspStudio_Boilerplate.Infrastructure.Helpers;
 
 namespace AspStudio_Boilerplate.Infrastructure.Services
 {

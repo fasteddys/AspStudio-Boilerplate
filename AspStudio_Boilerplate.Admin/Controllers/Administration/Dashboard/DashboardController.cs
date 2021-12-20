@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using AspStudio_Boilerplate.Infrastructure.Entities;
+using AspStudio_Boilerplate.Infrastructure.Entities.Dashboard.ViewModels;
 
 namespace AspStudio_Boilerplate.Admin.Controllers.Administration.Dashboard
 {
