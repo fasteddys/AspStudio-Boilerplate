@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AspStudio_Boilerplate.Entities.Models;
 using AspStudio_Boilerplate.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AspStudio_Boilerplate.Areas.Users.Models
+namespace AspStudio_Boilerplate.Areas.Administration.Models
 {
     public class EditUserViewModel
     {

@@ -1,4 +1,6 @@
-﻿namespace AspStudio_Boilerplate.Models.Authentication
+﻿using AspStudio_Boilerplate.Entities.Models;
+
+namespace AspStudio_Boilerplate.Models.Authentication
 {
     public class AuthenticateResponse
     {

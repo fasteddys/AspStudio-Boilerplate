@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
+using AspStudio_Boilerplate.Entities.Models;
 
 namespace AspStudio_Boilerplate.Helpers
 {

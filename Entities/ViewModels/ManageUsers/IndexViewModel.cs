@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspStudio_Boilerplate.Areas.Users.Models
+namespace AspStudio_Boilerplate.Entities.ViewModels.ManageUsers
 {
     public class IndexViewModel
     {

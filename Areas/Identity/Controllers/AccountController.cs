@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Entities.Models;
 
 namespace AspStudio_Boilerplate.Areas.Identity.Controllers
 {

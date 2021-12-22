@@ -30,7 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Users\Data" />
+    <Folder Include="Areas\Administration\Data" />
+    <Folder Include="Areas\Administration\Models" />
     <Folder Include="Entities\DTOs" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -95,6 +96,17 @@
     <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_LoginPartial.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_Sidebar.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Users\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Admin\appsettings.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Admin\bin\Debug\net6.0\AspStudio_Boilerplate.Admin.deps.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Admin\bin\Debug\net6.0\AspStudio_Boilerplate.Admin.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Admin\obj\AspStudio_Boilerplate.Admin.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Admin\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Admin\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\bin\Debug\net6.0\AspStudio_Boilerplate.Infrastructure.deps.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\bin\Debug\net6.0\AspStudio_Boilerplate.Infrastructure.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\obj\AspStudio_Boilerplate.Infrastructure.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\obj\project.packagespec.json" />
   </ItemGroup>
 
 </Project>

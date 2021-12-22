@@ -12,6 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Entities.Models;
 
 namespace AspStudio_Boilerplate.Services
 {

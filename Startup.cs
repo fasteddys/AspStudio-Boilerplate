@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 using System.Text;
+using AspStudio_Boilerplate.Entities.Models;
 
 namespace AspStudio_Boilerplate
 {

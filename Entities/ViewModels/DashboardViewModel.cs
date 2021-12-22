@@ -1,4 +1,6 @@
-﻿namespace AspStudio_Boilerplate.Models.ViewModels
+﻿using AspStudio_Boilerplate.Entities.Models;
+
+namespace AspStudio_Boilerplate.Models.ViewModels
 {
     public class DashboardViewModel
     {

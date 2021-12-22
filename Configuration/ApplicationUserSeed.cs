@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Entities.Models;
 
 namespace AspStudio_Boilerplate.Configuration
 {

@@ -2,6 +2,7 @@
 @inject IConfiguration Configuration
 @using Microsoft.AspNetCore.Identity
 @using AspStudio_Boilerplate.Areas.Identity
+@using AspStudio_Boilerplate.Entities.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -81,9 +82,9 @@
                 @if (CheckForRoles(roles, new string[] { "Admin" }))
                 {
                     <div class="menu-header">Administration</div>
-                    <div class="menu-item @(CheckForActive("Manage", "Index", "Users"))">
+                    <div class="menu-item @(CheckForActive("Manage", "Index", "AdminUsers"))">
                     
-                        <a asp-area="Users" asp-controller="Manage" asp-action="Index" class="menu-link">
+                        <a asp-area="Administration" asp-controller="ManageUsers" asp-action="Index" class="menu-link">
                         
                             <span class="menu-icon">
                                 <i class="fa fa-users-cog"></i>

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Entities.Models;
 
 namespace AspStudio_Boilerplate.Controllers.Api.V1
 {

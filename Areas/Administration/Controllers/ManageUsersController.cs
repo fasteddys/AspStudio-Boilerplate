@@ -1,26 +1,28 @@
-using AspStudio_Boilerplate.Areas.Users.Models;
-using AspStudio_Boilerplate.Models;
-using AspStudio_Boilerplate.Services;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspStudio_Boilerplate.Areas.Administration.Models;
+using AspStudio_Boilerplate.Entities.Models;
+using AspStudio_Boilerplate.Entities.ViewModels.ManageUsers;
+using AspStudio_Boilerplate.Models;
+using AspStudio_Boilerplate.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspStudio_Boilerplate.Areas.Users.Controllers
+namespace AspStudio_Boilerplate.Areas.Administration.Controllers
 {
-    [Area("Users")]
-    public class ManageController : Controller
+    [Area("Administration")]
+    public class ManageUsersController : Controller
     {
         private readonly IUserService _userService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
         private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public ManageController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper,
+        public ManageUsersController(IUserService userService, UserManager<ApplicationUser> userManager, IMapper mapper,
             RoleManager<ApplicationRole> roleManager)
         {
             _userService = userService;
@@ -62,7 +64,6 @@ namespace AspStudio_Boilerplate.Areas.Users.Controllers
 
             return View(evm);
         }
-
         [HttpPost]
         public async Task<IActionResult> Edit(int id, EditUserViewModel evm)
         {

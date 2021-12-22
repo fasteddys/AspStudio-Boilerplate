@@ -1,4 +1,5 @@
-﻿using AspStudio_Boilerplate.Models;
+﻿using AspStudio_Boilerplate.Entities.Models;
+using AspStudio_Boilerplate.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
