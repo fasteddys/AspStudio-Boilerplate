@@ -1,18 +1,16 @@
 ﻿using AspStudio_Boilerplate.Areas.Identity.Data;
-using AspStudio_Boilerplate.Areas.Identity.Models;
-using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Models.ApiModels;
 using AspStudio_Boilerplate.Models.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AspStudio_Boilerplate.Entities.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AspStudio_Boilerplate.Services
 {
