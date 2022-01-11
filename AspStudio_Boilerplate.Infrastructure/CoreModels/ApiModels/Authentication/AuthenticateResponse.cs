@@ -1,6 +1,6 @@
 ﻿using AspStudio_Boilerplate.Entities.Models;
 
-namespace AspStudio_Boilerplate.Models.Authentication
+namespace AspStudio_Boilerplate.Infrastructure.CoreModels.ApiModels.Authentication
 {
     public class AuthenticateResponse
     {

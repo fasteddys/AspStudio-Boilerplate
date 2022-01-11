@@ -30,12 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Administration\Data" />
-    <Folder Include="Areas\Administration\Models" />
-    <Folder Include="Areas\Identity\Data" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Identity\Manage\ChangePassword.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Identity\Manage\DeletePersonalData.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Identity\Manage\Disable2fa.cshtml" />
@@ -106,11 +100,33 @@
     <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\obj\AspStudio_Boilerplate.Infrastructure.csproj.nuget.dgspec.json" />
     <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\obj\project.assets.json" />
     <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Infrastructure\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Domain\obj\AspStudio_Boilerplate.Domain.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Domain\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="AspStudio_Boilerplate.Domain\obj\project.packagespec.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="AspStudio_Boilerplate.Domain\AspStudio_Boilerplate.Domain.csproj" />
-    <ProjectReference Include="AspStudio_Boilerplate.Infrastructure\AspStudio_Boilerplate.Infrastructure.csproj" />
+    <Compile Remove="AspStudio_Boilerplate.Domain\**" />
+    <Compile Remove="AspStudio_Boilerplate.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="AspStudio_Boilerplate.Domain\**" />
+    <EmbeddedResource Remove="AspStudio_Boilerplate.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AspStudio_Boilerplate.Domain\**" />
+    <None Remove="AspStudio_Boilerplate.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="AspStudio_Boilerplate.Domain\**" />
+    <Content Remove="AspStudio_Boilerplate.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Models" />
   </ItemGroup>
 
 </Project>

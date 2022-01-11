@@ -1,14 +1,9 @@
-using AspStudio_Boilerplate.Areas.Identity.Data;
-using AspStudio_Boilerplate.Models;
-using AspStudio_Boilerplate.Services;
+using AspStudio_Boilerplate.Entities.Models;
+using AspStudio_Boilerplate.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using AspStudio_Boilerplate.Entities.Models;
 
-namespace AspStudio_Boilerplate.Configuration
+namespace AspStudio_Boilerplate.Infrastructure.Configuration
 {
     public class ApplicationUserSeed : ISeeder
     {

@@ -1,8 +1,4 @@
-using AspStudio_Boilerplate.Areas.Identity.Data;
-using System;
-using System.Threading.Tasks;
-
-namespace AspStudio_Boilerplate.Services
+namespace AspStudio_Boilerplate.Infrastructure.Services
 {
     public interface ISeeder
     {

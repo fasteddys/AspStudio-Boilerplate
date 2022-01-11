@@ -1,13 +1,9 @@
-using AspStudio_Boilerplate.Areas.Identity.Data;
+using AspStudio_Boilerplate.Infrastructure.Services;
 using AspStudio_Boilerplate.Models;
-using AspStudio_Boilerplate.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace AspStudio_Boilerplate.Configuration
+namespace AspStudio_Boilerplate.Infrastructure.Configuration
 {
     public class ApplicationRoleSeed : ISeeder
     {

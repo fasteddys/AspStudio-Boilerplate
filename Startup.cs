@@ -1,4 +1,3 @@
-using AspStudio_Boilerplate.Areas.Identity.Data;
 using AspStudio_Boilerplate.Helpers;
 using AspStudio_Boilerplate.Models;
 using AspStudio_Boilerplate.Services;
@@ -14,6 +13,7 @@ using System;
 using System.Reflection;
 using System.Text;
 using AspStudio_Boilerplate.Entities.Models;
+using AspStudio_Boilerplate.Infrastructure;
 
 namespace AspStudio_Boilerplate
 {

@@ -3,7 +3,7 @@ using AspStudio_Boilerplate.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspStudio_Boilerplate.Areas.Identity.Data
+namespace AspStudio_Boilerplate.Infrastructure
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
